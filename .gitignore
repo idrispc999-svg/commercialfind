@@ -1,0 +1,7 @@
+bin/
+downloads/
+.logs/
+.cloud-attachments/
+node_modules/
+*.log
+.freebuff/

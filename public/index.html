@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>commercialfind</title>
+    <meta name="description" content="type a commercial, get the video file. no links." />
+    <link rel="icon" href="/assets/logo.webp" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=bungee&family=press+start+2p&family=rubik+glitch&family=space+mono:wght@400;700&family=vt323&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="scanlines" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <div class="brand">
+        <img class="logo" src="/assets/logo.webp" alt="commercialfind logo" width="200" height="200" />
+        <div class="brandtext">
+          <h1>commercialfind</h1>
+          <p class="tag">the ad retrieval machine</p>
+        </div>
+      </div>
+      <button id="music-toggle" class="music" type="button" aria-pressed="false">music: off</button>
+    </header>
+
+    <main>
+      <p id="host-note" class="host-note" hidden>
+        hosted copy — the downloader itself only runs on the local server. start it with
+        <code>bun run start</code> to search and download ads.
+      </p>
+
+      <section class="console">
+        <p class="eyebrow">ch. 03 — late night commercials</p>
+        <p class="pitch">type a commercial. we pull it off the air and hand you the file.</p>
+
+        <form id="find-form" class="finder" autocomplete="off">
+          <label class="field grow">
+            <span>what are you looking for?</span>
+            <input
+              id="query"
+              name="query"
+              type="text"
+              placeholder="oreo korean commercial"
+              maxlength="120"
+              spellcheck="false"
+              required
+            />
+          </label>
+
+          <label class="field count">
+            <span>how many ads</span>
+            <select id="count" name="count">
+              <option value="1">1</option>
+              <option value="2" selected>2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </label>
+
+          <button type="submit" class="go">find ads</button>
+        </form>
+
+        <p class="hint">no youtube links · just the video files · mp4, ready to save</p>
+      </section>
+
+      <section id="loading" class="loading" hidden>
+        <img src="/assets/loading.gif" alt="" class="loadgif" />
+        <div>
+          <p class="status" id="loading-text">tuning the antenna...</p>
+          <div class="bar"><span id="loading-bar"></span></div>
+        </div>
+      </section>
+
+      <p id="error" class="error" hidden></p>
+
+      <section class="results-head" id="results-head" hidden>
+        <h2>found</h2>
+        <p id="results-note"></p>
+      </section>
+
+      <section id="results" class="results"></section>
+    </main>
+
+    <footer>
+      <span>commercialfind © does not host anything</span>
+      <span id="footer-state">yt-dlp: ready</span>
+    </footer>
+
+    <audio id="theme" src="/assets/theme.mp3" loop preload="auto"></audio>
+    <script src="/app.js"></script>
+  </body>
+</html>
